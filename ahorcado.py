@@ -1,0 +1,68 @@
+import os
+import random
+personas = {
+    "hombres": [
+        "Juan", "Carlos", "Luis", "Andrés", "Jorge",
+        "Camilo", "Felipe", "Santiago", "Daniel", "Sebastián",
+        "Mateo", "Alejandro", "David", "Nicolás", "Diego",
+        "María", "Laura", "Ana", "Diana", "Paula",
+        "Valentina", "Camila", "Sofía", "Isabella", "Juliana",
+        "Daniela", "Natalia", "Carolina", "Andrea", "Tatiana"
+                ]
+            }
+
+palabra = "carolina"
+letra = ""
+ciclo = 3
+relleno = []
+salir = "y"
+
+
+def mostrar_espacios(palabra):
+    cantidad = len(palabra)
+    for i in range(cantidad):
+        relleno.insert(i,"_")    
+    return relleno
+
+relleno = mostrar_espacios(palabra)
+
+def validacion_juego(ciclo): 
+           
+    while ciclo > 0:    
+        if "_" in relleno:
+            letra = input("Ingrese una letra: -->") 
+            letra = letra.lower()
+            if letra in palabra:
+                cont = -1        
+                for i in palabra:
+                    cont += 1
+                    if i == letra:
+                        relleno[cont] = letra
+
+                os.system('cls')        
+                print(relleno)
+            else:
+                ciclo -= 1
+                os.system('cls')
+                print(f"\U0000274C Te quedan {ciclo} intentos... \U0000274C")
+                if ciclo == 0:
+                    os.system('cls')
+                    print("\U0000274C"*26)
+                    print("\U0000274C QUE LASTIMA PERDISTE, INTENTALO NUEVAMENTE ¡¡¡ \U0000274C")
+                    print("\U0000274C"*26)
+                
+        else:
+            print("\U00002705"*29)
+            print("\U00002705 FELICITACIONES LOGRASTE DESCUBRIR LA PALABRA SECRETA \U00002705")
+            print("\U00002705"*29)
+            break
+       
+while salir == "Y" or salir == "y":
+    validacion_juego(ciclo)
+    salir = input("Digite 'y' par volver a jugar, de lo contrario digite otro caracter: -->")
+    if salir != "Y" and salir != "y":
+        os.system('cls')
+        print("\U0001F44B" * 5, " Bye Bye ", "\U0001F44B" * 5)
+        break
+
+  
