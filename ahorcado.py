@@ -14,7 +14,6 @@ personas = {
 }
 
 letra = ""
-ciclo = 3
 salir = "y"
 
 #Crea arreglo con tamaño palabra
@@ -25,7 +24,8 @@ def mostrar_espacios(palabra):
         relleno.insert(i,"_")    
     return relleno
 
-def validacion_juego(ciclo):
+def validacion_juego():
+    ciclo = 3
     #elije nombre del diccionario al azar
     categoria = random.choice(list(personas.keys()))
     palabra = random.choice(list(personas[categoria]))
@@ -58,20 +58,28 @@ def validacion_juego(ciclo):
                     print("\U0000274C"*26)
                     print("\U0000274C QUE LASTIMA PERDISTE, INTENTALO NUEVAMENTE ¡¡¡ \U0000274C")
                     print("\U0000274C"*26)
+                    print(f"\n \U0000274C La palabra era ➡️  {palabra} ⬅️  \U0000274C \n\n")
+                    
         #en caso de que sean acertadas las letras y se llene el arreglo realiza else        
         else:
             print("\U00002705"*29)
             print("\U00002705 FELICITACIONES LOGRASTE DESCUBRIR LA PALABRA SECRETA \U00002705")
             print("\U00002705"*29)
-            break
+            print("\n\n")
+            break 
         
 #ciclo para repetir juego o salir
 while salir == "Y" or salir == "y":
-    validacion_juego(ciclo)
-    salir = input("Digite 'y' par volver a jugar, de lo contrario digite otro caracter: -->")
+    os.system('cls')
+    validacion_juego()
+    print("\u2B50"*38)    
+    salir = input("\u2B50 Digite 'y' par volver a jugar, de lo contrario digite otro caracter: -->  ")
+      
     if salir != "Y" and salir != "y":
         os.system('cls')
         print("\U0001F44B" * 5, " Bye Bye ", "\U0001F44B" * 5)
         break
 
+  
+  
   
