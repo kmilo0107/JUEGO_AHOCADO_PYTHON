@@ -2,32 +2,40 @@ import os
 import random
 personas = {
     "hombres": [
-        "Juan", "Carlos", "Luis", "Andrés", "Jorge",
-        "Camilo", "Felipe", "Santiago", "Daniel", "Sebastián",
-        "Mateo", "Alejandro", "David", "Nicolás", "Diego",
-        "María", "Laura", "Ana", "Diana", "Paula",
-        "Valentina", "Camila", "Sofía", "Isabella", "Juliana",
+        "Juan", "Carlos", "Luis", "Andres", "Jorge",
+        "Camilo", "Felipe", "Santiago", "Daniel", "Sebastian",
+        "Mateo", "Alejandro", "David", "Nicolas", "Diego"
+    ],
+    "mujeres": [
+        "Maria", "Laura", "Ana", "Diana", "Paula",
+        "Valentina", "Camila", "Sofia", "Isabella", "Juliana",
         "Daniela", "Natalia", "Carolina", "Andrea", "Tatiana"
-                ]
-            }
+    ]
+}
 
-palabra = "carolina"
 letra = ""
 ciclo = 3
-relleno = []
 salir = "y"
 
-
+#Crea arreglo con tamaño palabra
 def mostrar_espacios(palabra):
+    relleno = []
     cantidad = len(palabra)
     for i in range(cantidad):
         relleno.insert(i,"_")    
     return relleno
 
-relleno = mostrar_espacios(palabra)
 
-def validacion_juego(ciclo): 
-           
+def validacion_juego(ciclo):
+    #elije nombre del diccionario al azar
+    categoria = random.choice(list(personas.keys()))
+    palabra = random.choice(list(personas[categoria]))
+    palabra = palabra.lower()          
+
+    #llama a función para crear arreglo
+    relleno = mostrar_espacios(palabra)
+    #valida letra ingresada y rellena campos en el arreglo
+    #cuenta los espacios libres
     while ciclo > 0:    
         if "_" in relleno:
             letra = input("Ingrese una letra: -->") 
@@ -41,6 +49,7 @@ def validacion_juego(ciclo):
 
                 os.system('cls')        
                 print(relleno)
+            #descuenta intentos permitidos y finaliza juego
             else:
                 ciclo -= 1
                 os.system('cls')
@@ -50,13 +59,13 @@ def validacion_juego(ciclo):
                     print("\U0000274C"*26)
                     print("\U0000274C QUE LASTIMA PERDISTE, INTENTALO NUEVAMENTE ¡¡¡ \U0000274C")
                     print("\U0000274C"*26)
-                
+        #en caso de que sean acertadas las letras y se llene el arreglo realiza else        
         else:
             print("\U00002705"*29)
             print("\U00002705 FELICITACIONES LOGRASTE DESCUBRIR LA PALABRA SECRETA \U00002705")
             print("\U00002705"*29)
             break
-       
+#ciclo para repetir juego o salir
 while salir == "Y" or salir == "y":
     validacion_juego(ciclo)
     salir = input("Digite 'y' par volver a jugar, de lo contrario digite otro caracter: -->")
