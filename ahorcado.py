@@ -25,7 +25,6 @@ def mostrar_espacios(palabra):
         relleno.insert(i,"_")    
     return relleno
 
-
 def validacion_juego(ciclo):
     #elije nombre del diccionario al azar
     categoria = random.choice(list(personas.keys()))
@@ -65,6 +64,7 @@ def validacion_juego(ciclo):
             print("\U00002705 FELICITACIONES LOGRASTE DESCUBRIR LA PALABRA SECRETA \U00002705")
             print("\U00002705"*29)
             break
+        
 #ciclo para repetir juego o salir
 while salir == "Y" or salir == "y":
     validacion_juego(ciclo)
